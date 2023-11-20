@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Space Grotesk", sans-serif;
+  color: #220a30;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  text-transform: uppercase;
+}
+button {
+  cursor: pointer;
+}
+main > img {
+  position: absolute;
+  left: 0px;
+  height: 100vh;
+  z-index: -1;
+  width: 30%;
+}
+.front-card,
+.back-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  width: 450px;
+  height: 250px;
+  border-radius: 15px;
+}
+
+.front-card {
+  position: relative;
+  background-image: url(images/bg-card-front.png);
+  padding: 20px;
+  right: 69%;
+  top: 10%;
+}
+.circle {
+  display: flex;
+  align-items: center;
+}
+.filled-circle {
+  clip-path: circle();
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  margin-right: 15px;
+}
+.empty-circle {
+  border-radius: 50%;
+  border: 1px solid #fff;
+  width: 25px;
+  height: 25px;
+}
+.front-card-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px auto;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.card-name {
+  position: absolute;
+  bottom: 10%;
+  left: 7%;
+}
+.card-expiration-date {
+  position: absolute;
+  bottom: 10%;
+  right: 7%;
+}
+
+.card-number {
+  width: max-content;
+  margin: auto;
+  text-align: center;
+  font-size: 36.7px;
+  margin-bottom: 30px;
+}
+.back-card {
+  background-image: url(images/bg-card-back.png);
+  position: relative;
+  top: 12%;
+  right: 54%;
+}
+.back-number {
+  position: absolute;
+  top: 44%;
+  right: 12%;
+}
+form {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  width: 25%;
+  transition: opacity 0.6s ease-out;
+  min-width: 240px;
+}
+form.invisible {
+  opacity: 0;
+}
+
+input {
+  margin: 10px 0 7px 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #c7c5c8;
+  padding-left: 10px;
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
+}
+input:focus {
+  outline: 1px solid purple;
+}
+.exp-date-and-cvc {
+  display: grid;
+  grid-template-areas:
+    "exp exp cvc"
+    "exp-input-month exp-input-year input-cvc";
+  grid-template-columns: 70px 70px 1fr;
+  gap: 0 10px;
+}
+.expiration-date {
+  grid-area: exp;
+}
+#expiration-month {
+  grid-area: exp-input-month;
+}
+#expiration-year {
+  grid-area: exp-input-year;
+}
+.cvc {
+  grid-area: cvc;
+}
+#id {
+  grid-area: input-cvc;
+}
+input[type="submit"],
+.confirm-thanks button {
+  background-color: #220a30;
+  color: #fff;
+  height: 45px;
+  padding: 0;
+  cursor: pointer;
+}
+.wrong-field {
+  font-size: 10px;
+  color: red;
+  margin-bottom: 5px;
+  width: max-content;
+}
+
+.wrong-year,
+.empty-date,
+.empty-cvc {
+  visibility: hidden;
+}
+
+.empty-name,
+.empty-number,
+.wrong-name,
+.wrong-number {
+  display: none;
+}
+.wrong-year {
+  max-width: 100px;
+}
+.empty-cvc {
+  max-width: 90px;
+}
+.error:focus {
+  outline: 1px solid red;
+}
+.error {
+  border: 1px solid red;
+}
+.confirm-thanks {
+  visibility: hidden;
+  color: black;
+  position: absolute;
+  top: 25%;
+  left: 65%;
+  width: 18%;
+  text-align: center;
+  opacity: 0;
+  transition: all 1.5s ease-out 0.3s;
+}
+.confirm-thanks h1 {
+  margin: 20px auto;
+  font-weight: 400;
+}
+.confirm-thanks p {
+  margin-bottom: 40px;
+  color: #c7c5c8;
+  text-transform: initial;
+}
+.confirm-thanks button {
+  width: 150%;
+  margin: auto;
+  text-align: center;
+  border: 0;
+  border-radius: 10px;
+  transform: translateX(-15%);
+}
+.confirm-thanks a {
+  text-decoration: none;
+  color: #fff;
+}
+.confirm-thanks.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+footer {
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(50%);
+  text-transform: initial;
+}
+@media screen and (max-width: 1050px) {
+  .front-card {
+    right: 45%;
+  }
+  .back-card {
+    right: 30%;
+  }
+  form,
+  .confirm-thanks {
+    left: 65%;
+  }
+  .confirm-thanks {
+    left: 70%;
+  }
+  .empty-cvc {
+    max-width: 60px;
+  }
+}
+@media screen and (max-width: 865px) {
+  main > img {
+    height: 30%;
+    z-index: -1;
+    width: 100vw;
+  }
+  .front-card {
+    top: 20.4%;
+    right: 0;
+    z-index: 1;
+    height: 150px;
+    width: 350px;
+  }
+  .card-number {
+    position: absolute;
+    font-size: 25px;
+    top: 45%;
+    left: 10%;
+  }
+  .back-card {
+    top: -22%;
+    right: -18%;
+    height: 150px;
+    width: 350px;
+  }
+  .filled-circle {
+    width: 25px;
+    height: 25px;
+  }
+  form {
+    top: 47%;
+    left: 30%;
+    width: 25%;
+  }
+  .confirm-thanks {
+    top: 47%;
+    left: 40%;
+  }
+  .back-number {
+    top: 55%;
+  }
+  footer {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .front-card {
+    right: 30px;
+  }
+  .back-card {
+    right: -10%;
+  }
+  form {
+    left: 22%;
+  }
+  .confirm-thanks {
+    left: 35%;
+  }
+}
